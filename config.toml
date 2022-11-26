@@ -1,0 +1,61 @@
+baseURL = 'http://localhost:80'
+languageCode = 'en-us'
+title = 'andrewdomain Blog'
+theme = "archie"
+
+[params]
+   mode = "auto"
+   subtitle = "THe opinions expressed in this blog are my employer's only.."
+   customcss = ["css/spicedEmacs.css"]
+
+   [[params.social]]
+      name = "Github"
+      icon = "github"
+      url = "https://github.com/x7upLime"
+   [[params.social]]
+      name = "Twitter"
+      icon = "twitter"
+      url = "https://twitter.com/crdnx7/"
+   [[params.social]]
+      name = "Mail"
+      icon = "mail"                            
+      url = "mailto:x7uplime@gmail.com"
+
+   [[menu.main]]
+      name = "Home"
+      url = "/"
+      weight = 1
+   
+   [[menu.main]]
+      name = "All posts"
+      url = "/posts"
+      weight = 2
+   
+#   [[menu.main]]
+#      name = "About"
+#      url = "/about"
+#      weight = 3
+   
+   [[menu.main]]
+      name = "Tags"
+      url = "/tags"
+      weight = 4
+
+#[markup]
+#  [markup.highlight]
+#    anchorLineNos = false ## This one
+#    codeFences = true
+#    guessSyntax = false
+#    hl_Lines = ''
+#    hl_inline = false
+#    lineAnchors = ''
+#    lineNoStart = 1
+#    lineNos = true 
+#    lineNumbersInTable = false
+#    noClasses = true
+#    noHl = true
+#    style = 'rrt'
+#    tabWidth = 4
+[markup]
+  [markup.highlight]
+    noClasses = false
