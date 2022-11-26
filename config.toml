@@ -4,7 +4,7 @@ title = 'andrewdomain Blog'
 theme = "archie"
 
 [params]
-   mode = "auto"
+   mode = "light"
    subtitle = "THe opinions expressed in this blog are my employer's only.."
    customcss = ["css/spicedEmacs.css"]
 
