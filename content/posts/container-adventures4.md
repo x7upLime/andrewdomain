@@ -8,10 +8,13 @@ description: |
   and thorought the process of creation of the container image....
 draft: false
 minikube_master: 46bccc7defca8fce9c90f760cdf14026855d957a
+labels:
+ - container_adventures
+ - golang
 ---
 
-I know this is part 4 of an unexisting list of articles...  
-part 3, 2 and 1 are on my todolist..
+I know this is part 4 of an incomplete list of articles...  
+part 3 and 2 are on my todolist..
 
 This whole thing happened after the currently unpublished "container adventures 3",  
 and gave birth to those foolish junior prs/issues on [kubernetes/minikube](https://github.com/kubernetes/minikube)  
