@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: andrewdomain-blog
-        image: x7uplime/andrewdomain-blog:v1.0
+        image: x7uplime/andrewdomain-blog:v1.3
         imagePullPolicy: Always
         ports:
         - containerPort: 80
