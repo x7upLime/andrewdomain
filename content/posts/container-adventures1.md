@@ -100,7 +100,7 @@ Then I thought: "since I was already looking to learn some programming language.
 why not learn go while learning containers.. everything container-related seems to 
 be written in go...
 
-### crun --version
+### crun -\-version
 
 I already took a peek once inside the [containers/](https://github.com/containers) organization, 
 that podman is part of; It comprehends libraries for container storage, container images, ... as well as other
