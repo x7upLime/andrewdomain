@@ -8,7 +8,7 @@ description: |
   and thorought the process of creation of the container image....
 draft: false
 minikube_master: 46bccc7defca8fce9c90f760cdf14026855d957a
-labels:
+tags:
  - container_adventures
  - golang
 ---
