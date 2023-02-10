@@ -1,7 +1,7 @@
 ---
 title: "notes on `Rootless`"
 date: 2023-02-06T11:44:12+02:00
-lastmod: 2023-02-10T17:23:42+02:00
+lastmod: 2023-02-10T18:54:22+02:00
 draft: false
 description: | 
   mainly taking notes about different rootless-mechanism 
@@ -736,7 +736,12 @@ func joinUserAndMountNS(pid uint, pausePid string) (bool, int, error) {
 > 	
 > ///// And the parent.Parent() call, opens a pipe,
 > ///// that gets that 3 fd in the child process somehow...
+>
 > ```
+> > 3 Because it is the first inherited file after stdio/out/err...  
+> > inherited here: `cmd.ExtraFiles = []*os.File{pipeR}`  
+> > also 3 is hardcoded because of the simple nature of this mechanism
+>
 > That comment near that `if msg.Stage == 0 {` line, is describing what we'ge gonna see after compile/run:
 > ```
 > Starting rootlesskit - _ROOTLESSKIT_PIPEFD_UNDOCUMENTED ==  
