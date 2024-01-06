@@ -16,7 +16,7 @@ theme = "archie"
    [[params.social]]
       name = "Twitter"
       icon = "twitter"
-      url = "https://twitter.com/crdnx7/"
+      url = "https://twitter.com/atcorduneanu/"
    [[params.social]]
       name = "Mail"
       icon = "mail"                            
