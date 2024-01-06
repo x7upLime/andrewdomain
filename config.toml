@@ -20,7 +20,7 @@ theme = "archie"
    [[params.social]]
       name = "Mail"
       icon = "mail"                            
-      url = "mailto:x7uplime@gmail.com"
+      url = "mailto:andrew@andrewdomain.com"
 
    [[menu.main]]
       name = "Home"
