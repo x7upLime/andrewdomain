@@ -515,6 +515,36 @@ when their software is not behaving the way they thought it would.
 
 I could argue no more about the unification.
 
+## end
+
+In the end, if you've been thrown into a world where everything
+works differently than the way you're used to seeing them work,
+and you're expertise is abandoning you,
+I think it can be advantageous to be aware of freedesktop's
+[efforts](https://www.freedesktop.org/wiki/Specifications/) to maintain
+compatibility between systems.
+
+Speaking of filesystem hierarchy specifically, I think it can help
+to give an occasional look when needed, to
+[this manpage](https://www.freedesktop.org/software/systemd/man/file-hierarchy.html),
+that you may find in your distro as **man 7 file-hierarchy**. 
+
+This is the systemd-specific vision of the filesystem hierarchy under Linux,
+which is the defacto standard on systemd-based Linux distros
+and effectively changes the first table at the top of this article like so:
+
+| PATH             | descr                                                                                                                                                                                                                                                                                                                                                                                      |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| /usr             | Vendor-supplied operating system resources. Usually read-only, but this is not required. Possibly shared between multiple hosts. This directory should not be modified by the administrator, except when installing or removing vendor-supplied packages.                                                                                                                                  |
+| /usr/bin         | Binaries and executables for user commands that shall appear in the $PATH search path. It is recommended not to place binaries in this directory that are not useful for invocation from a shell (such as daemon binaries); these should be placed in a subdirectory of /usr/lib/ instead.                                                                                                 |
+| /usr/lib         | Static, private vendor data that is compatible with all architectures (though not necessarily architecture-independent). Note that this includes internal executables or other binaries that are not regularly invoked from a shell. Such binaries may be for any architecture supported by the system. Do not place public libraries in this directory, use $libdir (see below), instead. |
+| /usr/lib/arch-id | Location for placing dynamic libraries into, also called $libdir. Legacy locations of $libdir are /usr/lib/, /usr/lib64/. This directory should not be used for package-specific data, unless this data is architecture-dependent, too.                                                                                                                                                    |
+| /usr/sbin        | A compatibility symlink pointing to /usr/bin/, ensuring that scripts and binaries referencing these legacy paths correctly find their binaries.                                                                                                                                                                                                                                            |
+| /bin             | A compatibility symlink pointing to /usr/bin/, ensuring that scripts and binaries referencing these legacy paths correctly find their binaries.                                                                                                                                                                                                                                            |
+| /sbin            | A compatibility symlink pointing to /usr/bin/, ensuring that scripts and binaries referencing these legacy paths correctly find their binaries.                                                                                                                                                                                                                                            |
+| /lib             | A compatibility symlink pointing to /usr/lib/, ensuring that scripts and binaries referencing these legacy paths correctly find their binaries.                                                                                                                                                                                                                                            |
+| /lib64 | On some architecture ABIs, this compatibility symlink points to $libdir, ensuring that binaries referencing this legacy path correctly find their dynamic loader. This symlink only exists on architectures whose ABI places the dynamic loader in this path.                                                                                                                                        |
+
 ### my personal view about this
 
 For how small those changes seem from the outside,
@@ -560,36 +590,6 @@ but are a lot easier to administer.
 
 That is a very DevOps way of seeing it I think, 
 which apparently is not exactly aligned to the UNIX way.
-
-## end
-
-In the end, if you've been thrown into a world where everything
-works differently than the way you're used to seeing them work,
-and you're expertise is abandoning you,
-I think it can be advantageous to be aware of freedesktop's
-[efforts](https://www.freedesktop.org/wiki/Specifications/) to maintain
-compatibility between systems.
-
-Speaking of filesystem hierarchy specifically, I think it can help
-to give an occasional look when needed, to
-[this manpage](https://www.freedesktop.org/software/systemd/man/file-hierarchy.html),
-that you may find in your distro as **man 7 file-hierarchy**. 
-
-This is the systemd-specific vision of the filesystem hierarchy under Linux,
-which is the defacto standard on systemd-based Linux distros
-and effectively changes the first table at the top of this article like so:
-
-| PATH             | descr                                                                                                                                                                                                                                                                                                                                                                                      |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| /usr             | Vendor-supplied operating system resources. Usually read-only, but this is not required. Possibly shared between multiple hosts. This directory should not be modified by the administrator, except when installing or removing vendor-supplied packages.                                                                                                                                  |
-| /usr/bin         | Binaries and executables for user commands that shall appear in the $PATH search path. It is recommended not to place binaries in this directory that are not useful for invocation from a shell (such as daemon binaries); these should be placed in a subdirectory of /usr/lib/ instead.                                                                                                 |
-| /usr/lib         | Static, private vendor data that is compatible with all architectures (though not necessarily architecture-independent). Note that this includes internal executables or other binaries that are not regularly invoked from a shell. Such binaries may be for any architecture supported by the system. Do not place public libraries in this directory, use $libdir (see below), instead. |
-| /usr/lib/arch-id | Location for placing dynamic libraries into, also called $libdir. Legacy locations of $libdir are /usr/lib/, /usr/lib64/. This directory should not be used for package-specific data, unless this data is architecture-dependent, too.                                                                                                                                                    |
-| /usr/sbin        | A compatibility symlink pointing to /usr/bin/, ensuring that scripts and binaries referencing these legacy paths correctly find their binaries.                                                                                                                                                                                                                                            |
-| /bin             | A compatibility symlink pointing to /usr/bin/, ensuring that scripts and binaries referencing these legacy paths correctly find their binaries.                                                                                                                                                                                                                                            |
-| /sbin            | A compatibility symlink pointing to /usr/bin/, ensuring that scripts and binaries referencing these legacy paths correctly find their binaries.                                                                                                                                                                                                                                            |
-| /lib             | A compatibility symlink pointing to /usr/lib/, ensuring that scripts and binaries referencing these legacy paths correctly find their binaries.                                                                                                                                                                                                                                            |
-| /lib64 | On some architecture ABIs, this compatibility symlink points to $libdir, ensuring that binaries referencing this legacy path correctly find their dynamic loader. This symlink only exists on architectures whose ABI places the dynamic loader in this path.                                                                                                                                        |
 
 # Glossary
 
