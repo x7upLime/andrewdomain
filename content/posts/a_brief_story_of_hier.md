@@ -18,14 +18,14 @@ me understand the connotations of that proposal so I thought about
 using the occasion to do some little research to make light on this matter...
 
 What I found out is that Fedora was not the first distro to implement this choice,
-but was one of the fist ones to start this 10+ years old discussion about
-reforming the filesystem hierarchy under Linux, that only now is
-reaching a more advance state.
+but was one of the first ones to start this 10+ years old discussion about
+reforming the filesystem hierarchy under Linux, which now is
+reaching a more advanced state.
 
-For a number of reasons and necessities, the structure of the filesystems that
+For several reasons and necessities, the structure of the filesystems that
 host the binaries and libraries had changed on all the major GNU/Linux distributions,
-after long and painful internal work, with the purpose of
-providing a much cleaner structure and easier administration,
+after long and painful internal work, to provide 
+a much cleaner structure and easier administration,
 with the possible side effect of leaving behind the needs of some users, 
 that will probably migrate towards other systems.
 
@@ -36,27 +36,27 @@ that will probably migrate towards other systems.
 
 ## compliance
 
-I think I should start by making very clear that a Linux-based system is an animal of its own kind.
-Linux distibutions are not conventional UNIX(SUS-compliant) or POSIX or whatever kind of systems.
+I think I should start by making it very clear that a Linux-based system is an animal of its own kind.
+Linux distributions are not conventional UNIX(SUS-compliant) or POSIX or whatever kind of systems.
 **They're just Linux systems**.
 
-Linux systems pick only the best/most fitted aspects of each specification,
-and incorporates it, while not being 100% compliant with the whole.. maybe sometimes
-compliance is optionally added ecc... But as a general rule each Linux distro
+Linux systems pick only the best/most fitted aspects of each specification
+and incorporate it, while not being 100% compliant with the whole.. maybe sometimes
+compliance is optionally added etc... But as a general rule, each Linux distro
 could very easily be very different from the others.
 
-The whole ecosystem of linux distros is kept together
+The whole ecosystem of Linux distros is kept together
 thanks to **some conventions**, 
 that can be more or less technically enforced, 
-that then become standards.
+which become standards.
 So that in the meantime there is plenty of room for each one
 to express their own idea on how the system should work.
 
 
 ### man 7 hier
 
-One example of an almost-standardized aspect of linux distros
-that kinda survived during the years, is the **FHS (Filesystem Hierarchy Standard)** 
+One example of an almost-standardized aspect of Linux distros
+that kinda survived over the years, is the **FHS (Filesystem Hierarchy Standard)** 
 that is maintained by the Linux Foundation.
 
 The FHS describes the purpose of each path in your filesystem,
@@ -66,11 +66,11 @@ and that won't probably hurt the responsible sysadmin to read.
 **man 7 hier** is your local, system-specific (major version, ...) reference
 for the version of the FHS specification that your system supports.
 Check out the **STANDARDS** section of the manpage to see exactly which version
-your system is supporting (at this day on Gentoo it's the 3.0 from March 2015), 
+your system is supporting (on this day on Gentoo it's the 3.0 from March 2015), 
 and while you're at it, check also the **BUGS** section
 to remind yourself that yes.. it is just a convention that is not really technically enforced.  
-Because theoretically, you could put your binaries in /etc, mount /home as a tmpfs or 
-cause whatever degree of mayhem that you wish.
+Because theoretically, you could put your binaries in /etc, mount /home as a tmpfs,
+or cause whatever degree of mayhem that you wish.
 
 We're still (mainly) under GNU/Linux after all, where historically there has been
 an effort to guarantee to the user the maximum possible degree of freedom.
@@ -78,11 +78,11 @@ an effort to guarantee to the user the maximum possible degree of freedom.
 ## /usr
 
 For the rest of this article, we will see some vicissitudes around
-the bin, sbin and lib* directories over the years.
+the bin, sbin, and lib* directories over the years.
 
-In order to do so, I will start from this chunky first table with descriptions
-that I've copy/pasted from the (**rahter traditional**) hier manpage itself,
-with the purpose of showing how those definition change later on..
+To do so, I will start from this chunky first table with descriptions
+that I've copy/pasted from the (**rather traditional**) hier manpage itself,
+with the purpose of showing how those definitions change later on..
 
 | PATH | descr |
 | ---- | ----- |
@@ -96,17 +96,17 @@ with the purpose of showing how those definition change later on..
 
 The natural question here I think is:
 "Why do we even have this distinction between those directories".
-At a first glance it seems like unnecessary overcomplication,
-afer all we're talking about the same entities.  
+At first glance, it seems like unnecessary overcomplication,
+after all, we're talking about the same entities.  
 And also: "Why is this filesystem **usually mounted from a separate partition**??".
 
 Let's start by understanding better the purpose of the /usr filesystem,
-and equally importantly, where does it even come from.
+and equally importantly, where it even comes from.
 
 ### split-usr
 
 There is a very interesting mail that people close to where the changes are made
-keep quoting as a referce to this phenomenon, that provides historical context.  
+keep quoting as a reference to this phenomenon, which provides historical context.  
 I'm talking about [this mail](http://lists.busybox.net/pipermail/busybox/2010-December/074114.html)
 from the busybox ml.
 
@@ -136,11 +136,11 @@ i.e. **to bring the system from single-user mode, to multi-user mode**
 > ```
 
 You see that here is referred to as **the /bin vs /usr/bin split**,
-that we may call by the name of **split-usr**, but it would not be entirely correct.
+which we may call by the name of **split-usr**, but it would not be entirely correct.
 
 The term **split-usr** as used today, has a different meaning than the one used
 in this article and it probably has to do with the necessity of providing more
-distinction in the possible structure of a system in regard of its use of /usr
+distinction in the possible structure of a system in regard to its use of /usr
 (check [glossary](#glossary)). 
 It has to be said that this mail also comes from more than 10 years ago,
 while the pains of the upgrade, reorganizations, implementations,... are much more 
@@ -150,7 +150,7 @@ recent.
 Other distributions that detached from a standard filesystem specification
 like [GoboLinux](https://gobolinux.org/at_a_glance.html) and others, 
 do not have a /usr partition that contains the "os" and seem to not miss it.  
-By following the /usr pattern, as most linuxes have historically done,
+By following the /usr pattern, as most Linuxes have historically done,
 we've taken the same road as other UNIXes had,
 like SunOS that in 4.0.3 started adopting a readonly /usr filesystem, 
 and Oracle Solaris, that from version 11 started symlinking for
@@ -160,36 +160,36 @@ to their counterparts in /usr, where the actual system is.
 The fact that we have "the operating system", i.e. the static
 part of it composed of all the binaries and libraries,
 that shouldn't vary between hosts with the same version, under 
-a certain filesystem different than root, opens the doors
+a certain filesystem different from root, opens the doors
 to interesting scenarios like:
  + a simple readonly mount of /usr for security reasons.  
  + the easier backup of /usr before upgrades.  
  + the share of /usr between hosts (e.g. using a network share).  
  + centralized update of this static part, by sharing it.
  
-Following those logics, We could host some tiny linux boxes that require 
-very little resources, by having a rw / with all the
+Following those logics, We could host some tiny Linux boxes that require 
+very few resources, by having a rw / with all the
 (this is a recurring expression) **site specific** 
 files and configurations and sharing a common /usr between all of them.
 
 ==**do we need a split-usr configuration to accomplish this?**==  
 Good question, from the article above the answer is pretty clear.
-The message of it being that we clearly maintained unnecessary complexity
+The message of it is that we clearly maintained unnecessary complexity
 for decades, only because "if it works, don't touch it!".
 For most scenarios, this mechanism is completely unnecessary
 and for many people working on Linux, this possibility is also unknown. 
 From my personal experience, you can easily see huge
-virtualization-based infrastructures, where linux boxes
+virtualization-based infrastructures, where Linux boxes
 have a really simple filesystem separation: 
 /var/log separated is a good practice that not everybody follows,
-but not going as far as mounting /usr ro.
+but not go as far as mounting /usr ro.
 
 This is often not enough to make a change of that magnitude,
-the condition of "if it works, don't touch it!" must fail, and it kinda does.
+the condition of "if it works, don't touch it!" must fail, and it kinda of does.
 
 The article that goes by the title
 [Booting without /usr is broken](https://www.freedesktop.org/wiki/Software/systemd/separate-usr-is-broken/)
-does a good job in explaining one of the reasons why the **split-usr mechanism**
+does a good job of explaining one of the reasons why the **split-usr mechanism**
 is mostly defective on modern distros.
 > ```
 > Quite a number of programs these days hook themselves 
@@ -203,37 +203,37 @@ is mostly defective on modern distros.
 > ```
 
 Another very important reason that is recurrently mentioned in the mlists,
-and briefly outlined in this other article on freedesktop.org, that goes
+and briefly outlined in this other article on freedesktop.org, which goes
 by the title of [The case for the /usr merge](https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/),
 is that software nowadays is too complex.
 
-If sofware A that is mainly built with the feature A in mind and 
+If software A is mainly built with feature A in mind and 
 depends on library A, based on the consensus of the community, 
 gets packaged with support for feature X, 
 with the relative dependency on library X,
 then it is the maintainer's burden (if aware of the distinction)
-to emgage with the rest of the community to find a way to put library X,
+to engage with the rest of the community to find a way to put library X,
 that was previously situated on /usr/lib, into /lib,
 as a vital dependency of software A, that could be used to 
 bring up /usr during the early boot stages
 (Check dependencies for the software on your machine with `ldd $(which <BINARY_NAME>)` 
 to have a clearer idea about this).  
 Moreover, the developer of the upstream software (which is not related 
-to your distro's organization), is not aware of the linux-specific /usr-split
+to your distro's organization), is not aware of the Linux-specific /usr-split
 mechanism, and for that matter, the maintainer's job (the one who is aware of
 the /usr-split) gets more complicated; it has also been said on various 
 mailing lists, that testing such mechanism (/usr-split) is rather complicated.
 
 In conclusion of this topic, those mentioned above 
-have proven to be fairly common issue
-in all distros and with all init systems
+have proven to be fairly common issues
+in all distros, and with all init systems
 ([ref](https://www.mail-archive.com/debian-devel@lists.debian.org/msg337190.html)),
 we could say that the **split-usr mechanism** has not
 been well maintained throughout the decades.
 
 It could be the case to look for a better solution.
 
-The dilemma is: either we chose to repackage most distros
+The dilemma is: either we choose to repackage most distros
 in the classic early-days-UNIX way to repair split-usr,
 or we accept the current state of things:
 
@@ -250,7 +250,7 @@ effectively making the whole system much easier to maintain and administer.
 The conversation starting from [this reply](https://lwn.net/Articles/477541/) 
 for the **"The case for the /usr merge"** article on lwn.net,
 shows some very interesting points about why the initrd can be used as a
-more reliable, easier to maintain and generally modern solution,
+more reliable, easier to maintain, and generally modern solution,
 as opposed to the split-usr mechanism to bring the system up.
 
 At this point, one could also think that if we decide to use the initrd for this
@@ -261,14 +261,14 @@ i.e. "the directories" that leaked out of /usr (see note at the top),
 inside /usr again, effectively having **"the whole os"** on that filesystem.
 The difference here, with the previous split setup,
 is that **if** /usr is not on the same partition as /,
-the mount has to be taken care of by the initramfs,
+the mount has to be taken care of by the initrd,
 instead of by the directories in /.
 
-As the freedesktop.org's articles and some other posts pointed out,
+As freedesktop.org's articles and some other posts pointed out,
 the adoption of an operating system **entirely** placed under /usr,
-arguably favors the easier maintenance of those usecase
-showed above, like the shareable /usr.
-The only difference being that the mount process has to happen inside 
+arguably favors the easier maintenance of those use case
+shown above, like the shareable /usr.
+The only difference is that the mount process has to happen inside 
 the initramfs and be transparent for the system during the boot phase,
 to avoid falling into those chicken-and-egg and dependency issues.
 
@@ -294,14 +294,14 @@ to avoid falling into those chicken-and-egg and dependency issues.
 > the issues discussed above.
    
 So systems can still have /usr on a separate partition,
-the only difference is that **in that case** the initrd is
+the only difference is that **in that case**, the initrd is
 **the only supported way of bringing it up** 
 (check [this](https://forums.gentoo.org/viewtopic-p-8591784.html?sid=6b728f7132cbd104e809c348de60b9c1#8591784)
-explaination).
+explanation).
 
 The initrd solution is however not perfect and 100% victimless.
-There have been complaints about those usecases
-that have to do with resource contstrained environments.
+There have been complaints about those use cases
+that have to do with resource-contstrained environments.
 I'm talking about the embedded world ([ref](https://lwn.net/Articles/670306/)):
 where not having to maintain an initrd is a huge benefit.
 > ```
@@ -316,9 +316,9 @@ where not having to maintain an initrd is a huge benefit.
 > ```
 The possible first wave of users leaving the community.
 
-Also [this here](https://lwn.net/Articles/670324/) is a very well written
+Also, [this here](https://lwn.net/Articles/670324/) is a very well-written
 collection of concerns about the change to merge-usr in Debian,
-being it a non subscription-based supported distribution of GNU/Linux.
+being it a non-subscription-based supported distribution of GNU/Linux.
 > ```
 > I, for example, am afraid of having to merge /usr in existing systems
 > during upgrades, causing repartitions to be necessary. I am afraid of
@@ -336,7 +336,7 @@ Other possible losses for the community.
 That I think is a valid point for those scenarios where we're updating/upgrading 
 our operating systems in-place, instead of migrating the services
 deployed on them.  
-During the years, many poor quality scripts could have been built
+During the years, many poor-quality scripts could have been built
 by colleagues that maybe are not even part of the company anymore, not to talk
 about the upgrade process itself, where a lot of things could go wrong,
 depending on the degree of care that has been taken of that os,
@@ -350,17 +350,17 @@ The /usr-merge has already happened in probably all the major distros,
 with the relative distro-maintenance-pain and sysadmin-upgrade-pain.
 From this point on, so as not to leave things unfinished,
 it would be much easier to introduce new changes
-in order to apply further semplifications.
+in order to apply further simplifications.
 
 ## bin & sbin
 
 During the same years of the first discussions
 about the /usr-merge, there were also
 [discussions](https://lists.fedoraproject.org/pipermail/devel/2011-October/158845.html) 
-about the purpose of the bin and sbin directories and their nowaday's state.
+about the purpose of the bin and sbin directories and their current state.
 
 In the ml post linked above, a couple of very interesting
-and teachful points have been made, some similar to the ones for the /usr-merge:
+and enlightening points have been made, some similar to the ones for the /usr-merge:
 > ```
 > a) the split between sbin and bin requires psychic powers from
 >    upstream developers:
@@ -400,7 +400,7 @@ But for this specific matter, there is also more.
 
 The "bin vs. sbin separation" is another mechanism that has probably not
 been maintained well throughout the decades.
-In modern distributions you can easily find 
+In modern distributions, you can easily find 
 `PATH=/bin:/sbin:/usr/sbin:/usr/local/bin:/opt/bin:/everything` 
 for all the users, which is not exactly a good practice as per 
 the intended bin/sbin distinction..
@@ -409,11 +409,11 @@ As claimed by Fedora's
 [Changes/Unify bin and sbin](https://fedoraproject.org/wiki/Changes/Unify_bin_and_sbin),
 there are many mechanisms for a normal user to gain privileges
 without them even knowing, and then its PATH already contains all the
-sbin variants for reasons like systemd's behaviour
+sbin variants for reasons like systemd's behavior
 of setting a PATH for all users and services that has both bins and sbins.
 This specific mechanism of systemd is quite intricate and rather than
-trying to find it's functioning in systemd itself,
-it could be better looked in an application-specific way.
+trying to find its functioning in systemd itself,
+it could be better looked at in an application-specific way.
 The `man 5 environment.d` on your system
 (or also [here](https://www.freedesktop.org/software/systemd/man/latest/environment.d.html))
 in the **APPLICABILITY** section, outlines the inner workings of this mechanism:
@@ -445,7 +445,7 @@ In my case for example, I do have a PATH variable defined inside
 /etc/environment.d/10-gentoo-env.conf (that has been put there by gentoo's env-update) 
 which looks similar to `echo PATH=$PATH`.
 But then I also have it in /etc/profile.env, 
-and also distros like fedora and derivates (rocky linux, ...) 
+and also distros like fedora and derivates (rocky Linux, ...) 
 seem to have this logic entirely contained in /etc/profile.
 ```
 # Path manipulation
@@ -483,13 +483,13 @@ but can we even do that given nowadays software?
 >  The categories of executables these days go beyond the split of 
 > "thing a user can run" and "thing the admin can run". [ref](https://pagure.io/fesco/issue/3135#comment-890527)
 
-Personally I'd like to think more that
+Personally, I'd like to think more that
 [this proposal](https://discussion.fedoraproject.org/t/f40-change-proposal-unify-usr-bin-and-usr-sbin-system-wide/99853/16)
-is the way to go; that is a more romantic way of seeing linux.
+is the way to go; that is a more romantic way of seeing Linux.
 But then [the reply to that](https://discussion.fedoraproject.org/t/f40-change-proposal-unify-usr-bin-and-usr-sbin-system-wide/99853/18),
-is an amazingly well painted portrait, of the world we're living in.
+is an amazingly well-painted portrait, of the world we're living in.
 I'll probably take this post as a future reference when I'll have to explain
-"things that are happening in linux".
+"things that are happening in Linux".
 > ```
 > In the old times there was “root” and lusers, 
 > the privilege separation was completely binary. 
@@ -509,7 +509,7 @@ I'll probably take this post as a future reference when I'll have to explain
 > In fact, the process may be root and still fail.
 > ```
 
-The second paragraph is also a reference that one should come back to,
+The second paragraph is also a reference that one should come back to
 when their software is not behaving the way they thought it would.
 
 I could argue no more about the unification.
@@ -517,26 +517,26 @@ I could argue no more about the unification.
 ### my personal view about this
 
 For how small those changes seem from the outside,
-they proved to be big, and their reasons and implications numerous.
+they proved to be big, and their reasons and implications are numerous.
 
 With the initrd solution to the split-usr issue,
 an attempt has been made to modernize a workflow 
 that is generally less and less seen in the wild,
-in order to not lose the creative part of the community,
+to not lose the creative part of the community,
 while maintaining the bigger part happy.
 
 Replicating and maintaining artistic configurations such as
-shared ro /usr via NFS over an entire linux infrastructure,
+shared ro /usr via NFS over an entire Linux infrastructure,
 requires inventiveness, effort in testing and maintenance,
 biting your tongue when the manager buys from a bad vendor,...
-and generally time, which is an extremely pricy asset.
+and generally, time, which is an extremely pricy asset.
 One thing that I couldn't stop thinking is that by "playing" with your
-os that way, you are treating your linux as something that barely exists
+os that way, you are treating your Linux as something that barely exists
 anymore in the majority of cases.
 
 Nowadays, especially in the enterprise community, you are much more used
 to virtual machines than baremetal, and more and more used to containers
-than virtual machines, and generally more used to treating a linux
+than virtual machines, and generally more used to treating a Linux
 system as something **atomic**, and as **disposable** as possible.
 
 What happened is that today we don't really have 
@@ -551,19 +551,19 @@ vital, information on a git server,
 and deploy your stuff from there using some kind of automation.  
 **When it breaks, you usually toss it, you don't try to repair it**.  
 To do that, it is required to deal with many different technologies,
-task that is much easier to accomplish if you are part of a team
+a task that is much easier to accomplish if you are part of a team
 with a lot of people, each with its own specialization.
 In that scenario, at the end of the day, you will find yourself with a lot more
 machines in your infrastructure, that have a cost in resources, 
 but are a lot easier to administer.
 
 That is a very DevOps way of seeing it I think, 
-which apparently is not exacly aligned to the UNIX way.
+which apparently is not exactly aligned to the UNIX way.
 
 ## end
 
-In the end, if you've been thrown in a world where everything
-works differently than the way you're used to see them work,
+In the end, if you've been thrown into a world where everything
+works differently than the way you're used to seeing them work,
 and you're expertise is abandoning you,
 I think it can be advantageous to be aware of freedesktop's
 [efforts](https://www.freedesktop.org/wiki/Specifications/) to maintain
@@ -575,7 +575,7 @@ to give an occasional look when needed, to
 that you may find in your distro as **man 7 file-hierarchy**. 
 
 This is the systemd-specific vision of the filesystem hierarchy under Linux,
-which is the defacto standard on systemd-based linux distros
+which is the defacto standard on systemd-based Linux distros
 and effectively changes the first table at the top of this article like so:
 
 | PATH             | descr                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -608,10 +608,10 @@ and effectively changes the first table at the top of this article like so:
 **split-usr**
 : A system whose /usr directory is still unpopulated or needs to be mounted during
   the boot phase. This could also mean a merged-usr system, whose /usr partition was not mounted
-  before init kicks in and the processes are starting.
+  before init kicks in and the processes start.
   
-  > The /usr filesystem do not have to be on the same partition as /,  
-  > but **it will have** to be mounted during early-boot by the initramfs,  
+  > The /usr filesystem does not have to be on the same partition as /,  
+  > but **it will have** to be mounted during early boot by the initramfs,  
   > so that when the actual init starts, /usr is ready. ([check](https://lwn.net/Articles/670139/))
 
 REFERENCES:  
@@ -619,7 +619,7 @@ REFERENCES:
 [2] https://lists.freedesktop.org/archives/systemd-devel/2023-February/048831.html  
 [3] http://lists.busybox.net/pipermail/busybox/2010-December/074114.html  
 
-# FAQ - Can I boot a systemd-based linux distribution without an initrd?
+# FAQ - Can I boot a systemd-based Linux distribution without an initrd?
 This one is actually a real thing that I heard :) (not in question form tho).
 
 As stated by different articles and posts, the changes
@@ -634,7 +634,7 @@ i.e. if you don't need to mount /usr at boot time.
 # References
 Maybe there are things that I wasn't able to catch, 
 or I didn't immediately see the implications.
-Also interesting points have been made in those resources, that are unrelated
+Also, interesting points have been made in those resources, that are unrelated
 to the main topic of this article.  
 Anyway, here is a list of very interesting material to dig into.
 
