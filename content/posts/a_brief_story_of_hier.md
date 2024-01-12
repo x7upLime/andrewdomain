@@ -3,8 +3,9 @@ title: "A_brief_story_of_hier"
 date: 2024-01-07T21:33:38+02:00
 draft: false
 description: |
-  Providing some historical context around the Fedora 40 proposed change of unifying 
-  /bin and /sbin
+  Some of the vicissitudes around the changes in the filesystem hierarchy
+  in major Linux distributions from 2011 to today. /usr-merge and bin/sbin
+  unification are the changes that have been taken into consideration.
 tags:
  - sys
 ---
