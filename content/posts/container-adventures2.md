@@ -1,5 +1,5 @@
 ---
-title: "Container Adventures 4"
+title: "Container Adventures 2"
 date: 2023-01-23T15:17:23+02:00
 lastmod: 2023-01-26T22:51:42+02:00
 description: |
@@ -13,10 +13,7 @@ tags:
  - golang
 ---
 
-I know this is part 4 of an incomplete list of articles...  
-part 3 and 2 are on my todolist..
-
-This whole thing happened after the currently unpublished "container adventures 3",  
+This whole thing happened after a couple of more trials in the container world 
 and gave birth to those foolish junior prs/issues on [kubernetes/minikube](https://github.com/kubernetes/minikube)  
  [#15678](https://github.com/kubernetes/minikube/pull/15678) ca3  
  [#15696](https://github.com/kubernetes/minikube/pull/15696) ca3  
