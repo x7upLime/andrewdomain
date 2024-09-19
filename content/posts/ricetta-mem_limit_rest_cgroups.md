@@ -7,7 +7,7 @@ description: |
   di un cgroup, rispetto alla memoria. Creando le condizioni per osservare quello che accade vicino al limite.
 tags:
  - sys
- - cgroup
+ - cgroups
  - golang
  - memory
 ---
