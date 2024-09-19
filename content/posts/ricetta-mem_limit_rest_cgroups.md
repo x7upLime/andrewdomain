@@ -1,5 +1,5 @@
 ---
-title: "Ricetta: limite di memoria per una (mock) REST API tramite cgroups"
+title: "Ricetta: limite di memoria tramite cgroups"
 date: 2024-09-19T11:39:50+02:00
 draft: false
 description: |
