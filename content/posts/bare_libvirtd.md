@@ -186,6 +186,28 @@ to accomplish so, looks like the following:
     virsh net-start blog-jacket
     virsh net-autostart blog-jacket
     ```
+	
+I want to be in control of each virtual machine's IP address, and this 
+is doable in a number of ways, either with DHCP reservations based on MAC address
+inside the libvirt network's definition, or by just claiming static IP
+addresses inside the virtual machine's network stack.
+
+We can do either since we are in control of both the MAC address and
+first boot parameters that influence the network configuration.
+
+My blog-jacket.xml file looks like the following:  
+```xml
+<network>
+  <name>blog-jacket</name>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='virbr2' stp='on' delay='0'/>
+  <ip address='192.168.126.1' netmask='255.255.255.0' />
+</network>
+```
 
 #### create a new virtual machine
 We're starting from the point where you have a qcow2 disk for your operating system, 
