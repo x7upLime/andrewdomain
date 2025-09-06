@@ -36,6 +36,10 @@ mail client can be whatever, I'll probably stick to evolution on my laptop to ge
  + cloud-user on the mail machine
  + GNOME DE with Evolution as an email client
  + blog.jacket.lime is the domain that we are controlling
+ 
+Please note also that I assume that **this setup is used only inside a closed lab environment**, 
+as the cofiguration is not secure enough for any other kind of environment.
+
 
 ## Setup the MX record
 Take note of the mail machine's ip address, and setup the A record for it,
@@ -163,7 +167,15 @@ For the authentication, you can help yourself with the button "Check for support
 In the "Receiving Options" I prefer setting a reasonable amount of minutes after which
 to have Evolution check for new emails, which is literally the first option of the bunch.
 
-The "Sending Email" form just needs the hostname for the Postfix service, in our case mail.blog.jacket.lime:465  
+The "Sending Email" form wants to know the hostname/port for the Postfix service, 
+in our case it will be mail.blog.jacket.lime:25 without any encryption.  
+It is worth mentioning that port 25 is the port for MTA-to-MTA transmission, and not our MUA-to-MTA, which
+should be one of 587 or 465, that would require extra configuration and hence it was avoided.  
+Just remember it is not a best practice.  
+Another thing worth mentioning, is that the mail submission works automatically and without authentication,
+just because the host where the Evolution client is, is part of the network listed in Postfix's **mynetworks**
+parameter, that enables clients to **submit or relay** mails without authentication. 
+Everything outside *mynetworks* would need SASL authentication.
 ![set email transport in evolution](/posts/images/evol_config__transp.png "set email transport in evolution")
 
 Then some other trivial options and that should be it.
