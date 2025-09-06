@@ -48,6 +48,12 @@ Remove the machine from libvirt:
 Attach a physical (except that it's virtual) console to a running machine:  
 **virsh console \<machine\>**
 
+Start a machine whenever libvirtd comes up:  
+**virsh autostart \<machine\>**
+
+Prevent a machine from starting whenever libvirtd comes up:  
+**virsh autostart --disable \<machine\>**
+
 ## Actual article
 There are many ways to approach virtualization, 
 depending on your needs — whether personal or enterprise-level. 
