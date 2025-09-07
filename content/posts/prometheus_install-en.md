@@ -74,7 +74,7 @@ This way, after a `systemctl --user daemon-reload`, you'll have a blogposts netw
 share between your quadlets, so that they can see each other and resolve each other's names.  
 You can see the network in the output of `podman network list`.
 
-### Install a Prometheus quadlet
+### Install a Prometheus podman-systemd.unit
 The requirements for having a Prometheus service locally are quite small compared to other services.
 
 You'll need to decide which **version of the software** you want. If you don't know use the latest available version
