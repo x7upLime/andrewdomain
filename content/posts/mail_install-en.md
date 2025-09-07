@@ -33,6 +33,7 @@ mail client can be whatever, I'll probably stick to evolution on my laptop to ge
 ## Assumptions
  + A dns server managed by a freeipa installation at 192.168.126.10
  + A mail.blog.jacket.lime machine at 192.168.126.11
+ + there is no local firewall active on the mail machine
  + cloud-user on the mail machine
  + GNOME DE with Evolution as an email client
  + blog.jacket.lime is the domain that we are controlling
